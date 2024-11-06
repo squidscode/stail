@@ -1,26 +1,31 @@
 #! /usr/bin/env bash
 
-if [ $# != 1 ]; then
+if [ $# != 1 -a $# != 2 ]; then
     echo "Usage:" >&2
-    echo " stail number-of-lines" >&2
+    echo " stail number-of-lines [max-line-length]" >&2
     exit 1
 fi
 
 BUF_LEN=$1
+MAX_LINE_LENGTH=$([ $# = 2 ] && echo "$2" || echo "80")
 BUF=()
+nl='
+'
 
 for i in $(seq 1 ${BUF_LEN}); do 
     printf "\n"
     BUF+=( "" )
 done
 
-while IFS= read -r line; do 
+while IFS="$nl" read -r line; do 
     BUF+=( "$line" )
     unset 'BUF[0]'
     BUF=( "${BUF[@]}" )
     
     printf "\e[${BUF_LEN}F"
+    # printf "BUF[${#BUF[@]}]:\n"
     for l in "${BUF[@]}"; do 
-        printf "\e[K%s\n" "$l"
+        # printf "%s\n" "$l"
+        printf "\e[K%.*s\n" "$MAX_LINE_LENGTH" "$l"
     done
 done
