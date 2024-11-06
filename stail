@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
 if [ $# != 1 ]; then
-    echo "stail NUMBER-OF-LINES" >&2
+    echo "Usage:" >&2
+    echo " stail number-of-lines" >&2
     exit 1
 fi
 
