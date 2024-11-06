@@ -2,7 +2,7 @@
 
 if [ $# != 1 -a $# != 2 ]; then
     echo "Usage:" >&2
-    echo " stail number-of-lines [max-line-length]" >&2
+    echo " stail number-of-lines [max-line-length=80]" >&2
     exit 1
 fi
 

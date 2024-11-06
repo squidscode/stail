@@ -5,4 +5,4 @@ for i in {0..10}; do
     echo "$i"; 
     sleep 0.5; 
     # ...............
-done 2>&1 | ./stail 5
+done 2>&1 | ./stail/usr/bin/stail 5

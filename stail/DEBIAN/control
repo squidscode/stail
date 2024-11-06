@@ -1,0 +1,6 @@
+Package: stail
+Architecture: all
+Maintainer: @squidscode
+Priority: optional
+Version: 0.1
+Description: a scrolling stdin line display
