@@ -20,8 +20,8 @@ done 2>&1 | stail 5
 
 ## Installation:
 ```bash
-test ! -e stail.deb
+test ! -e stail.deb \
     && curl -O https://raw.githubusercontent.com/squidscode/stail/main/stail.deb \
-    && sudo dpkg -i stail.deb 
+    && dpkg -i stail.deb \
     && rm -f stail.deb
 ```

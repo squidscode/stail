@@ -23,9 +23,7 @@ while IFS="$nl" read -r line; do
     BUF=( "${BUF[@]}" )
     
     printf "\e[${BUF_LEN}F"
-    # printf "BUF[${#BUF[@]}]:\n"
     for l in "${BUF[@]}"; do 
-        # printf "%s\n" "$l"
         printf "\e[K%.*s\n" "$MAX_LINE_LENGTH" "$l"
     done
 done
