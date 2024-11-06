@@ -1,0 +1,25 @@
+#! /usr/bin/env bash
+
+if [ $# != 1 ]; then
+    echo "stail NUMBER-OF-LINES" >&2
+    exit 1
+fi
+
+BUF_LEN=$1
+BUF=()
+
+for i in $(seq 1 ${BUF_LEN}); do 
+    printf "\n"
+    BUF+=( "" )
+done
+
+while IFS= read -r line; do 
+    BUF+=( "$line" )
+    unset 'BUF[0]'
+    BUF=( "${BUF[@]}" )
+    
+    printf "\e[${BUF_LEN}F"
+    for l in "${BUF[@]}"; do 
+        printf "\e[K%s\n" "$l"
+    done
+done
